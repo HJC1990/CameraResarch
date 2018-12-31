@@ -47,7 +47,8 @@ class ViewController: UIViewController {
             print("错误")
         }
         captureDeviceOutput = AVCaptureVideoDataOutput()
-        captureDeviceOutput.setSampleBufferDelegate(self, queue: DispatchQueue.main)
+        let queue = DispatchQueue(label: "camera")
+        captureDeviceOutput.setSampleBufferDelegate(self, queue: queue)
         captureSession.addInput(captureDeviceInput)
         captureSession.addOutput(captureDeviceOutput)
         setupContexts()
